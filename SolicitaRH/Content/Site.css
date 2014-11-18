@@ -1,0 +1,153 @@
+﻿body
+{
+    font-size: .85em;
+    font-family: "Trebuchet MS", Verdana, Helvetica, Sans-Serif;
+    color: #232323;
+    background-color: #fff;
+}
+
+header,
+footer,
+nav,
+section {
+    display: block;
+}
+
+/* Styles for basic forms
+-----------------------------------------------------------*/
+
+.procedente-atualizada, .TempoAtendimento-atualizada {
+    display:none;
+    color:#f47a34;
+    margin-top:5px;
+    
+}
+fieldset 
+{
+    border:1px solid #ddd;
+    padding:0 1.4em 1.4em 1.4em;
+    margin:0 0 1.5em 0;
+}
+
+legend 
+{
+    font-size:1.2em;
+    font-weight: bold;
+}
+
+textarea 
+{
+    min-height: 75px;
+}
+
+.editor-label 
+{
+    margin: 1em 0 0 0;
+}
+
+.editor-field 
+{
+    margin:0.5em 0 0 0;
+}
+
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error
+{
+    color: #ff0000;
+}
+
+.field-validation-valid
+{
+    display: none;
+}
+
+.input-validation-error
+{
+    border: 1px solid #ff0000 !important;
+    background-color: #ffeeee !important;
+}
+
+.validation-summary-errors
+{
+    font-weight: bold;
+    color: #ff0000;
+}
+
+.validation-summary-valid
+{
+    display: none;
+}
+
+
+
+
+
+/* Estilos Personalizados 
+    -----------------------------------------*/
+#Perguntas {
+    display:none;
+}
+
+/* Votação bases {*/
+.img_votacao {
+    width:23px;
+    height:23px;
+    float:left;   
+    cursor:pointer;
+}
+.img_votacao_javotou {
+    /*width:23px;
+    height:23px;*/
+    float:left;
+}
+
+/*.votacaoPositivo {
+    background-image:url(../../content/themes/base/images/NotaPositiva.png);
+    background-repeat:no-repeat;
+}
+.votacaoPositivoNaoVota {
+    background-image:url(../../content/themes/base/images/NotaPositiva.png);
+    background-repeat:no-repeat;
+}
+.votacaoNegativo {
+    background-image:url(../../content/themes/base/images/NotaNegativa.png);
+    background-repeat:no-repeat;
+}
+.votacaoNegativoNaoVota {
+    background-image:url(../../content/themes/base/images/NotaNegativa.png);
+    background-repeat:no-repeat;
+}
+
+.JaVotouPositivo {
+    background-image:url(../../content/themes/base/images/NotaPositivaConfirmada.png);
+    background-repeat:no-repeat;
+}
+.JaVotouNegativo {
+    background-image:url(../../content/themes/base/images/NotaNegativaConfirmada.png);
+    background-repeat:no-repeat;
+}*/ 
+
+/*.JaVotouPositivo {
+    background-color:#00ff21;
+    border:1px solid green;
+}
+.JaVotouNegativo {
+    border:1px solid red;
+    background-color:#ff0000;
+}*/
+/*} Votação bases */
+
+.ui-datepicker {
+    z-index:99 !important;
+}
+
+
+h2 {
+    margin-left:-20px !important;
+}
+
+h4 {
+    margin-left:-20px !important;
+}

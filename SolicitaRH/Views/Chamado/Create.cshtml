@@ -1,0 +1,123 @@
+﻿@model SolicitaRH.Models.Chamado
+
+@{
+    ViewBag.Title = "Cadastrar chamado";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Create", "Chamado", FormMethod.Post, new { enctype = "multipart/form-data", id = "formPrincipal" })) {
+
+    
+    @Html.ValidationSummary(true)
+    <div style="float:left; width:50%">
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CategoriaId)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.CategoriaId, new SelectList(ViewBag.CategoriaId, "CategoriaId", "Nome"), "", new { style="width:85%;" })
+        </div>
+    </div>
+    <div style="float:left; width:50%">
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TopicoId)
+        </div>
+        <div class="editor-field">
+            <select name="TopicoId" id="TopicoId" style="width:85%;"><option></option></select>
+        </div>
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.CelulaId)
+    </div>
+    <div class="editor-field">
+        <input type="text" id="CelulaNome" value="" disabled />
+        <input type="hidden" name="CelulaId" id="CelulaId" />
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Titulo)
+    </div>
+    <div class="editor-field">
+        @Html.TextBoxFor(model => model.Titulo, new { style="width:70%" })
+        @Html.ValidationMessageFor(model => model.Titulo)
+    </div>
+
+    <div class="editor-label">
+        Descrição
+    </div>
+    <div class="editor-field">
+        <textarea id="Descricao" name="Descricao" style="width:90%"></textarea>
+    </div>
+
+    <p>
+        <input type="button" id="btnSubmit" value="Cadastrar" class="btn btn-success" />
+
+        @*<button type="button" class=" btn btn-inverse " onclick="location.href='@Url.Action("Index", "Celula")'">
+            <i class="icon-arrow-left icon-white icone "></i> Voltar 
+        </button>*@
+    </p>
+}
+
+<script>
+    $(document).ready(function () {
+        $('#CategoriaId').change(function () {
+            var CategoriaId = $(this).val();
+            if (CategoriaId != null && CategoriaId != "" && CategoriaId != 0) {
+                $.post(Base + "Chamado/PegaTopicos/", { 'CategoriaId': CategoriaId }, function (resposta) {
+                    if (resposta != "") {
+                        $('#TopicoId').html(resposta);
+                    } else {
+                        
+                    }
+                }, "json");
+            }
+        });
+
+        $('#TopicoId').change(function () {
+            var TopicoId = $(this).val();
+
+            if (TopicoId != null && TopicoId != "" && TopicoId != 0) {
+                $.post(Base + "Chamado/PegaCelula/", { 'TopicoId': TopicoId }, function (resposta) {
+                    if (resposta != "") {
+                        $('#CelulaNome').val(resposta.Nome);
+                        $('#CelulaId').val(resposta.CelulaId);
+                    } else {
+
+                    }
+                }, "json");
+            }
+        });
+
+        $('#btnSubmit').click(function () {
+            var MensagemInvalido = "";
+            
+            if ($('#CategoriaId').val() == "") {
+                MensagemInvalido += " - O preenchimento da categoria é obrigatório!\n";
+            }
+
+            if ($('#TopicoId').val() == "") {
+                MensagemInvalido += " - O preenchimento do tópico é obrigatório!\n";
+            }
+
+            if ($('#CelulaId').val() == "") {
+                MensagemInvalido += " - O preenchimento da célula é obrigatório!\n";
+            }
+
+            if ($('#Titulo').val() == "") {
+                MensagemInvalido += " - O preenchimento do título é obrigatório!\n";
+            }
+
+            if ($('#Descricao').val() == "") {
+                MensagemInvalido += " - O preenchimento da descrição é obrigatório!\n";
+            }
+
+            if (MensagemInvalido == "") {
+                $('#formPrincipal').submit();
+            } else {
+                alert(MensagemInvalido);
+            }
+        });
+    });
+
+</script>

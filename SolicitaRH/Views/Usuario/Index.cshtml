@@ -1,0 +1,64 @@
+﻿@model IEnumerable<SolicitaRH.Models.Usuario>
+
+@{
+    ViewBag.Title = "Usuários";
+    var Mensagem = TempData["Mensagem"];
+}
+
+<h2>@ViewBag.Title</h2>
+
+<!-- Cadastrar -->
+<p>
+    <button type="button" class=" btn btn-primary btn-small" onclick="location.href='@Url.Action("Create","Usuario")'">
+        <i class="icon-plus icon-white icone "></i> Cadastrar
+    </button>
+</p>
+
+<!-- Tabela de dados -->
+<table width="100%">
+    <tr>
+        <th>
+            Nome
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Administrador
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Administrador)
+            </td>
+            <td>
+                <button type="button" class=" btn btn-info btn-mini" onclick="location.href='@Url.Action("Details", "Usuario", new { id = item.UsuarioId })'">
+                    <i class="icon-tasks icon-white icone"></i> Detalhes
+                </button>
+                <button type="button" class=" btn btn-warning btn-mini" onclick="location.href='@Url.Action("Edit", "Usuario", new { id = item.UsuarioId })'">
+                    <i class="icon-wrench icon-white icone"></i> Editar
+                </button>
+                    <button type="button" class=" btn btn-danger btn-mini" onclick="location.href='@Url.Action("Delete", "Usuario", new { id = item.UsuarioId })'">
+                    <i class="icon-remove icon-white icone"></i> Excluir
+                </button>
+            </td>
+        </tr>
+    }
+</table>
+<script>
+    $(document).ready(function () {
+        
+        @if (Mensagem != null && Mensagem != "") {
+            @: ExibeMensagem("@Mensagem", "Sucesso");
+        }
+    });
+</script>

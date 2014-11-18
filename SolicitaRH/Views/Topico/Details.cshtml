@@ -1,0 +1,29 @@
+﻿@model SolicitaRH.Models._Topico
+
+@{
+    ViewBag.Title = "Detalhar tópcio";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="display-label">Categoria: <strong>@Model.Categoria.Nome</strong></div>
+
+<div class="display-label">Nome: <strong>@Model.Topico.Nome</strong></div>
+
+<div class="display-label">Categoria: <strong>@Model.Celula.Nome</strong></div>
+
+<div class="display-label">Prioridade: <strong>@Model.Topico.Prioridade</strong></div>
+
+<div class="display-label">Tempo previsto: <strong>@Model.Topico.TempoMedioPrevisto</strong></div>
+
+<p>
+    <br />
+    <button type="button" class=" btn btn-warning " onclick="location.href='@Url.Action("Edit", "Topico", new { id = Model.Topico.TopicoId })'">
+        <i class="icon-wrench icon-white icone"></i> Editar
+    </button>
+    
+    <button type="button" class=" btn btn-inverse " onclick="location.href='@Url.Action("Index", "Topico")'">
+        <i class="icon-arrow-left icon-white icone "></i> Voltar
+    </button>
+</p>
+

@@ -1,0 +1,22 @@
+﻿@model SolicitaRH.Models.Categoria
+           
+@{
+    ViewBag.Title = "Excluir categoria";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<h3>Tem certeza que deseja excluir este registro?</h3>
+
+<div class="display-label">Nome: <strong>@Model.Nome</strong></div>
+
+@using (Html.BeginForm()) {
+    <p>
+        <br />
+        <input type="submit" value="Excluir" class="btn btn-warning" />
+                
+        <button type="button" class=" btn btn-inverse " onclick="location.href='@Url.Action("Index", "Categoria")'">
+            <i class="icon-arrow-left icon-white icone "></i> Voltar
+        </button>
+    </p>
+}

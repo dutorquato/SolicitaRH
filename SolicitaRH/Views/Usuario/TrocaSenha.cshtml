@@ -1,0 +1,51 @@
+﻿@model SolicitaRH.Models.Usuario
+
+@{
+    ViewBag.Title = "Troca senha";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    @Html.HiddenFor(model => model.UsuarioId)
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Nome)
+    </div>
+    <div class="editor-field">
+        @Html.HiddenFor(model => model.Nome)
+        <input type="text" disabled value="@Model.Nome" />
+    </div>
+
+    <div class="editor-label">
+        Senha anterior
+    </div>
+    <div class="editor-field">
+        @Html.Password("Senha", "", new { value = "" })
+        @Html.ValidationMessage("Senha")
+    </div>
+
+    <div class="editor-label">
+        Nova senha
+    </div>
+    <div class="editor-field">
+        @Html.Password("NovaSenha")
+        @Html.ValidationMessage("NovaSenha")
+    </div>
+
+    <div class="editor-label">
+        Confirma senha
+    </div>
+    <div class="editor-field">
+        @Html.Password("ConfirmaSenha")
+        @Html.ValidationMessage("ConfirmaSenha")
+    </div>
+
+
+    <p>
+        <br />
+        <input type="submit" value="Salvar" class="btn btn-success" />
+    </p>
+}

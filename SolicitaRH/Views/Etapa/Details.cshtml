@@ -1,0 +1,30 @@
+﻿@model SolicitaRH.Models.Etapa
+
+@{
+    ViewBag.Title = "Detalhar etapa";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="display-label">É primeira etapa: <strong>@Html.DisplayFor(model => model.EPrimeiraEtapa)</strong></div>
+
+<div class="display-label">Nome: <strong>@Model.Nome</strong></div>
+
+<div class="display-label">Identificador: <strong>@Model.EtapaId</strong></div>
+
+<div class="display-label">Permite interação: <strong>@Html.DisplayFor(model => model.PermiteInteracao)</strong></div>
+
+<div class="display-label">Desativado: <strong>@Html.DisplayFor(model => model.Desativado)</strong></div>
+
+<div class="display-label">Ações: <strong>@SolicitaRH.Funcoes.Geral.PegaAcoesNome(Model.EtapaId)</strong></div>
+
+<p>
+    <br />
+    <button type="button" class=" btn btn-warning " onclick="location.href='@Url.Action("Edit", "Etapa", new { id = Model.EtapaId })'">
+        <i class="icon-wrench icon-white icone"></i> Editar
+    </button>
+      
+    <button type="button" class=" btn btn-inverse " onclick="location.href='@Url.Action("Index", "Etapa")'">
+        <i class="icon-arrow-left icon-white icone "></i> Voltar
+    </button>
+</p>

@@ -1,0 +1,197 @@
+﻿@model SolicitaRH.Models._Chamado
+
+@{
+    ViewBag.Title = "Detalhar chamado #" + Model.Chamado.ChamadoId ;
+    List<SolicitaRH.Models._ChamadoInteracao> mChamadoInteracao = ViewBag.mChamadoInteracao;
+    List<SolicitaRH.Models.Acao> mAcoes = ViewBag.mAcoes;
+    List<SolicitaRH.Models.Celula> mCelulas = ViewBag.mCelulas;
+    var Mensagem = TempData["Mensagem"];
+    bool Atendente = ViewBag.Atendente;
+}
+
+<h2>@ViewBag.Title</h2>
+
+<!-- Acoes -->
+@if( mAcoes != null &&  mAcoes.Count != 0 ){
+    <div style="height:80px; background-color:#f1efef">
+        Ações: <br />
+        <div style="text-align:center; margin-left:-25px">
+            @foreach (SolicitaRH.Models.Acao item in mAcoes) { 
+                if( Atendente == true && item.AtendenteVisualiza == true || Atendente == false && item.UsuarioVisualiza == true  ){
+                    <button type="button" class="btn" 
+                        onclick="ExecutaAcao(@Model.Chamado.ChamadoId, @item.AcaoId, '@item.ExigeJustificativa', '@item.ExigePlanejamento', '@item.PermiteTransferencia', 'False');">
+                        @item.Nome
+                    </button>
+                }
+            }
+        </div>
+    </div>
+    <div id="DivJustificativa" style="display:none;">
+        Justificativa: <textarea name="CampoJustificativa" id="CampoJustificativa"></textarea> <br />
+        <input type="button" class="btn" id="btnConcluiAcaoJustificativa" value="Executar Ação" 
+            onclick='ContinuaExecutaAcao(@Model.Chamado.ChamadoId, "CampoJustificativa");' />
+    </div>
+    <div id="DivPlanejamento" style="display:none;">
+        Planejamento: <textarea name="CampoPlanejamento" id="CampoPlanejamento"></textarea><br />
+        <input type="button" class="btn" id="btnConcluiAcaoPlanejamento" value="Executar Ação" 
+            onclick='ContinuaExecutaAcao(@Model.Chamado.ChamadoId, "CampoPlanejamento");' />
+    </div>
+    <div id="DivTransferencia" style="display:none;">
+        Novo atendente: <br />
+        <table>
+            <tr>
+                <td>Célula: </td>
+                <td>
+                    <select id="CelulaIdTransferencia">
+                        <option></option>
+                        @foreach (SolicitaRH.Models.Celula item in mCelulas) { 
+                            <option value="@item.CelulaId">@item.Nome</option>
+                        }
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Atendente: </td>
+                <td><select id="AtendenteIdTransferencia"></select></td>
+            </tr>
+        </table>
+        <input type="button" class="btn" id="btnConcluiAcaoTransferencia" value="Executar Ação" 
+            onclick='ContinuaExecutaAcao(@Model.Chamado.ChamadoId, "AtendenteIdTransferencia");' />
+    </div>
+}
+
+<p>&nbsp;<br /></p>
+
+<!-- Primeira linha -->
+<div class="display-label" style="float:left; width:33%">
+    <strong>Categoria: </strong><br />
+    @Model.Categoria.Nome
+</div>
+<div class="display-label" style="float:left; width:33%">
+    <strong>Tópico: </strong><br />
+    @Model.Topico.Nome
+</div>
+<div class="display-label" style="float:left; width:34%">
+    <strong>Célula responsável: </strong><br />
+    @Model.Celula.Nome
+</div>
+
+<p>&nbsp;<br /></p>
+
+<!-- Segunda linha -->
+<div class="display-label" style="float:left; width:33%">
+    <strong>Usuário: </strong><br />
+    &nbsp;
+    @if (Model.Usuario != null)
+    {
+        @Model.Usuario.Nome
+    }
+</div>
+<div class="display-label" style="float:left; width:33%">
+    <strong>Atendente: <br /></strong>
+    &nbsp;
+    @if (Model.Atendente != null)
+    {
+        @Model.Atendente.Nome
+    }
+</div>
+<div class="display-label" style="float:left; width:34%">
+    <strong>Etapa: <br /></strong>
+    @Model.Etapa.Nome
+</div>
+
+<p>&nbsp;<br /></p>
+
+<!-- Terceira linha -->
+<div class="display-label" style="float:left; width:33%">
+    <strong>Data de abertura: </strong><br />
+    @SolicitaRH.Funcoes.TrataDados.ExibeData(Model.Chamado.DataAbertura)
+</div>
+<div class="display-label" style="float:left; width:33%">
+    <strong>Data limite prevista:</strong> <br />
+    @SolicitaRH.Funcoes.Geral.PegaLimitePrevisto(Model.Chamado.ChamadoId)
+</div>
+<div class="display-label" style="float:left; width:34%">
+    <strong>Prioridade:</strong> <br />
+    @SolicitaRH.Funcoes.Geral.CalculaPrioridade(Model.Chamado.ChamadoId)
+</div>
+
+<p>&nbsp;<br /></p>
+
+<!-- Titulo -->
+<div class="display-label">
+    <strong>Título:</strong> <br />
+    @Html.Raw(Model.Chamado.Titulo)
+</div>
+
+<p>&nbsp;<br /></p>
+
+<!-- Interações -->
+<div class="display-label">
+    <strong>Interações:</strong> <br />
+    @foreach (SolicitaRH.Models._ChamadoInteracao item in mChamadoInteracao)
+    {
+        <table>
+            <tr>
+                <td>@SolicitaRH.Funcoes.TrataDados.ExibeData(item.ChamadoInteracao.Data)</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td colspan="2"><strong>@item.Usuario.Nome: </strong>@item.ChamadoInteracao.Interacao</td>
+            </tr>
+        </table>
+    }
+</div>
+
+<p>&nbsp;<br /></p>
+
+<!-- Interagir -->
+@if( Model.Etapa.PermiteInteracao == true ){
+    using (Html.BeginForm("SalvaInteracao", "Chamado", FormMethod.Post, new { id = "formInteragir" }))
+    {
+        @Html.Hidden("ChamadoId", Model.Chamado.ChamadoId)
+        <div class="display-label">
+            <strong>Interagir:</strong> <br />
+            <textarea name="Interacao" id="InteracaoNova" style="width:85%; height:100px;"></textarea>
+            <p><input type="submit" id="btnEnviaInteracao" value="Confirmar" class="btn btn-success" /></p>
+        </div>
+    }
+}
+
+<!-- Botoes abaixo -->
+<p>
+    <br />    
+    <button type="button" class=" btn btn-inverse " onclick="location.href='@Url.Action("Index", "Chamado")'">
+        <i class="icon-arrow-left icon-white icone "></i> Voltar
+    </button>
+</p>
+
+<script>
+    $(document).ready(function () {
+        
+        @if (Mensagem != null && Mensagem != "")
+        {
+            @: ExibeMensagem("@Mensagem", "Sucesso");
+        }
+
+        $('#btnEnviaInteracao').click(function () {
+            if ($('#InteracaoNova').val() == "") {
+                return false;
+            }
+        });
+
+        $('#CelulaIdTransferencia').change(function () {
+            var CelulaId = $(this).val();
+
+            if (CelulaId != null && CelulaId != "" && CelulaId != 0) {
+                $.post(Base + "Chamado/PegaAtendentesCombo/", { 'CelulaId': CelulaId }, function (resposta) {
+                    if (resposta != "") {
+                        $('#AtendenteIdTransferencia').html(resposta);
+                    } else {
+
+                    }
+                }, "json");
+            }
+        });
+    });
+</script>

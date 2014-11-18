@@ -1,0 +1,61 @@
+﻿@model SolicitaRH.Models.Topico
+
+@{
+    ViewBag.Title = "Editar tópico";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    @Html.HiddenFor(model => model.TopicoId)
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.CategoriaId)
+    </div>
+    <div class="editor-field">
+        @Html.DropDownListFor(model => model.CategoriaId, new SelectList(ViewBag.CategoriaId,"CategoriaId","Nome"), Model.CategoriaId)
+        @Html.ValidationMessageFor(model => model.CategoriaId)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Nome)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.Nome)
+        @Html.ValidationMessageFor(model => model.Nome)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.CelulaId)
+    </div>
+    <div class="editor-field">
+        @Html.DropDownListFor(model => model.CelulaId, new SelectList(ViewBag.CelulaId,"CelulaId","Nome"), Model.CelulaId)
+        @Html.ValidationMessageFor(model => model.CelulaId)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Prioridade)
+    </div>
+    <div class="editor-field">
+        @Html.TextBoxFor(model => model.Prioridade, new { alt = "999" })
+        @Html.ValidationMessageFor(model => model.Prioridade)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.TempoMedioPrevisto)
+    </div>
+    <div class="editor-field">
+        @Html.TextBoxFor(model => model.TempoMedioPrevisto, new { alt = "9999999999999999999999" })
+        @Html.ValidationMessageFor(model => model.TempoMedioPrevisto)
+    </div>
+
+    <p>
+        <input type="submit" value="Salvar" class="btn btn-success" />
+
+        <button type="button" class=" btn btn-inverse " onclick="location.href='@Url.Action("Index", "Topico")'">
+            <i class="icon-arrow-left icon-white icone "></i> Voltar
+        </button>
+    </p>
+}

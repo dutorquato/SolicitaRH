@@ -1,0 +1,51 @@
+﻿@model SolicitaRH.Models.Etapa
+@{
+    ViewBag.Title = "Cadastrar etapa";
+    IEnumerable<SolicitaRH.Models._EtapaAcao> mEtapaAcao = ViewBag.mEtapaAcao;
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <div class="editor-label">
+        @Html.LabelFor(model => model.EPrimeiraEtapa)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.EPrimeiraEtapa)
+        @Html.ValidationMessageFor(model => model.EPrimeiraEtapa)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Nome)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.Nome)
+        @Html.ValidationMessageFor(model => model.Nome)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.PermiteInteracao)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.PermiteInteracao)
+        @Html.ValidationMessageFor(model => model.PermiteInteracao)
+    </div>
+
+    <div class="editor-label">Ações: </div>
+    foreach (SolicitaRH.Models._EtapaAcao item in mEtapaAcao){ 
+        <div>
+            <input type="checkbox" name="AcaoId" id="CelulaId-@item.Acao.AcaoId" value="@item.Acao.AcaoId" />
+            @item.Acao.Nome
+        </div>
+    }
+    
+    <p>
+        <br />
+        <input type="submit" value="Cadastrar" class="btn btn-success" />
+
+        <button type="button" class=" btn btn-inverse " onclick="location.href='@Url.Action("Index", "Etapa")'">
+            <i class="icon-arrow-left icon-white icone "></i> Voltar 
+        </button>
+    </p>
+}

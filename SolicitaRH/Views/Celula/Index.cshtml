@@ -1,0 +1,54 @@
+﻿@model IEnumerable<SolicitaRH.Models.Celula>
+
+@{
+    ViewBag.Title = "Células";
+    var Mensagem = TempData["Mensagem"];
+}
+
+<h2>@ViewBag.Title</h2>
+
+<!-- Cadastrar -->
+<p>
+    <button type="button" class=" btn btn-primary btn-small" onclick="location.href='@Url.Action("Create","Celula")'">
+        <i class="icon-plus icon-white icone "></i> Cadastrar
+    </button>
+</p>
+
+<!-- Tabela de dados -->
+<table width="100%">
+    <tr>
+        <th> Nome </th>
+        <th> Prioridade </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td style="width:55%">
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td align="center">
+                @Html.DisplayFor(modelItem => item.Prioridade)
+            </td>
+            <td>
+                <button type="button" class=" btn btn-info btn-mini" onclick="location.href='@Url.Action("Details", "Celula", new { id = item.CelulaId })'">
+                    <i class="icon-tasks icon-white icone"></i> Detalhes
+                </button>
+                <button type="button" class=" btn btn-warning btn-mini" onclick="location.href='@Url.Action("Edit", "Celula", new { id = item.CelulaId })'">
+                    <i class="icon-wrench icon-white icone"></i> Editar
+                </button>
+                    <button type="button" class=" btn btn-danger btn-mini" onclick="location.href='@Url.Action("Delete", "Celula", new { id = item.CelulaId })'">
+                    <i class="icon-remove icon-white icone"></i> Excluir
+                </button>
+            </td>
+        </tr>
+    }
+</table>
+<script>
+    $(document).ready(function () {
+        
+        @if (Mensagem != null && Mensagem != "") {
+            @: ExibeMensagem("@Mensagem", "Sucesso");
+        }
+    });
+</script>

@@ -1,0 +1,87 @@
+﻿@model SolicitaRH.Models.Usuario
+
+@{
+    ViewBag.Title = "Cadastrar usuário";
+    IEnumerable<SolicitaRH.Models._UsuarioCelula> mUsuarioCelula = ViewBag.mUsuarioCelula;
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Nome)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.Nome)
+        @Html.ValidationMessageFor(model => model.Nome)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Email)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.Email)
+        @Html.ValidationMessageFor(model => model.Email)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Login)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.Login)
+        @Html.ValidationMessageFor(model => model.Login)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Senha)
+    </div>
+    <div class="editor-field">
+        @Html.PasswordFor(model => model.Senha)
+        @Html.ValidationMessageFor(model => model.Senha)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Administrador)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.Administrador)
+        @Html.ValidationMessageFor(model => model.Administrador)
+    </div>
+
+    <div class="editor-label">Células</div>
+    foreach (SolicitaRH.Models._UsuarioCelula item in mUsuarioCelula) { 
+        <div>
+            @item.Celula.Nome: 
+            Usuário: <input type="checkbox" name="CelulaIdUsuario" class="CelulaIdUsuario" id="CelulaIdUsuario-@item.Celula.CelulaId" lang="@item.Celula.CelulaId" value="@item.Celula.CelulaId" />
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            Atendente: <input type="checkbox" name="CelulaIdAtendente" class="CelulaIdUsuario" id="CelulaIdAtendente-@item.Celula.CelulaId" lang="@item.Celula.CelulaId" value="@item.Celula.CelulaId" />
+        </div>
+    }
+
+    <p>
+        <br />
+        <input type="submit" value="Cadastrar" class="btn btn-success" />
+
+        <button type="button" class=" btn btn-inverse " onclick="location.href='@Url.Action("Index", "Usuario")'">
+            <i class="icon-arrow-left icon-white icone "></i> Voltar 
+        </button>
+    </p>
+}
+
+<script>
+    $(document).ready(function () {
+        $('.CelulaIdUsuario, .CelulaIdUsuario').click(function () {
+            var CelulaId = $(this).attr("lang");
+            var CheckId = $(this).attr("id");
+            //alert("CelulaId: " + CelulaId + "\nCheckId: " + CheckId);
+
+            if (CheckId.indexOf("Usuario") != -1) {
+                $("#CelulaIdAtendente-" + CelulaId).prop("checked", false);
+            } else {
+                $("#CelulaIdUsuario-" + CelulaId).prop("checked", false);
+            }
+        });
+    });
+
+</script>

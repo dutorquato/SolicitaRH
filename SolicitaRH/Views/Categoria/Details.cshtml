@@ -1,0 +1,20 @@
+﻿@model SolicitaRH.Models.Categoria
+
+@{
+    ViewBag.Title = "Detalhar categoria";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="display-label">Nome: <strong>@Model.Nome</strong></div>
+
+<p>
+    <br />
+    <button type="button" class=" btn btn-warning " onclick="location.href='@Url.Action("Edit", "Categoria", new { id = Model.CategoriaId })'">
+        <i class="icon-wrench icon-white icone"></i> Editar
+    </button>
+    
+    <button type="button" class=" btn btn-inverse " onclick="location.href='@Url.Action("Index", "Categoria")'">
+        <i class="icon-arrow-left icon-white icone "></i> Voltar
+    </button>
+</p>

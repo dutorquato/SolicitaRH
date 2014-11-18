@@ -1,0 +1,93 @@
+﻿@model SolicitaRH.Models.Acao
+
+@{
+    ViewBag.Title = "Editar ação";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.AcaoId)
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Nome)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.Nome)
+        @Html.ValidationMessageFor(model => model.Nome)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.EtapaSeguinteId)
+    </div>
+    <div class="editor-field">
+        @Html.DropDownListFor(model => model.EtapaSeguinteId, new SelectList(ViewBag.EtapaSeguinteId, "EtapaId", "Nome"), Model.EtapaSeguinteId)
+        @Html.ValidationMessageFor(model => model.EtapaSeguinteId)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.TextoConfirmacao)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.TextoConfirmacao)
+        @Html.ValidationMessageFor(model => model.TextoConfirmacao)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.AtendenteVisualiza)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.AtendenteVisualiza)
+        @Html.ValidationMessageFor(model => model.AtendenteVisualiza)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.MarcaAtendente)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.MarcaAtendente)
+        @Html.ValidationMessageFor(model => model.MarcaAtendente)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.PermiteTransferencia)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.PermiteTransferencia)
+        @Html.ValidationMessageFor(model => model.PermiteTransferencia)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.UsuarioVisualiza)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.UsuarioVisualiza)
+        @Html.ValidationMessageFor(model => model.UsuarioVisualiza)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.ExigePlanejamento)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.ExigePlanejamento)
+        @Html.ValidationMessageFor(model => model.ExigePlanejamento)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.ExigeJustificativa)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.ExigeJustificativa)
+        @Html.ValidationMessageFor(model => model.ExigeJustificativa)
+    </div>
+
+    <p>
+        <br />
+        <input type="submit" value="Salvar" class="btn btn-success" />
+
+        <button type="button" class=" btn btn-inverse " onclick="location.href='@Url.Action("Index", "Acao")'">
+            <i class="icon-arrow-left icon-white icone "></i> Voltar
+        </button>
+    </p>
+}

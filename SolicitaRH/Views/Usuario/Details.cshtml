@@ -1,0 +1,30 @@
+﻿@model SolicitaRH.Models.Usuario
+
+@{
+    ViewBag.Title = "Detalhar usuário";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="display-label">Nome: <strong>@Model.Nome</strong></div>
+
+<div class="display-label">Email: <strong>@Model.Email</strong></div>
+
+<div class="display-label">Login: <strong>@Model.Login</strong></div>
+
+<div class="display-label">Senha: <strong>*</strong></div>
+
+<div class="display-label">Último login: <strong>@Model.UltimoLogin</strong></div>
+
+<div class="display-label">Administrador: <strong>@SolicitaRH.Funcoes.TrataDados.TrataBoolStr(Model.Administrador)</strong></div>
+
+<div class="display-label">Células: <strong>@SolicitaRH.Funcoes.Geral.PegaCelulasNome(Model.UsuarioId)</strong></div>
+
+
+<p>
+    <input type="submit" value="Salvar" class="btn btn-success" />
+
+    <button type="button" class=" btn btn-inverse " onclick="location.href='@Url.Action("Index", "Usuario")'">
+        <i class="icon-arrow-left icon-white icone "></i> Voltar
+    </button>
+</p>

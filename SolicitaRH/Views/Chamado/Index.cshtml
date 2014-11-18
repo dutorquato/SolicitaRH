@@ -1,0 +1,162 @@
+﻿@model IEnumerable<SolicitaRH.Models._Chamado>
+
+@{
+    ViewBag.Title = "Chamados";
+    var Mensagem = TempData["Mensagem"];
+
+    IEnumerable<SolicitaRH.Models._Chamado> mNovosChamados = ViewBag.mNovosChamados;
+    IEnumerable<SolicitaRH.Models._Chamado> mMeusChamados = ViewBag.mMeusChamados;
+}
+
+<h2>@ViewBag.Title</h2>
+
+<!-- Cadastrar -->
+<p>
+    <button type="button" class=" btn btn-primary btn-small" onclick="location.href='@Url.Action("Create","Chamado")'">
+        <i class="icon-plus icon-white icone "></i> Novo chamado
+    </button>
+</p>
+
+<!-- Tabela de novos chamados -->
+<h4>Novos chamados</h4>
+<table width="100%">
+    <tr>
+        <th>
+            #
+        </th>
+        <th>
+            Categoria
+        </th>
+        <th>
+            Tópico
+        </th>
+        <th>
+            Célula
+        </th>
+        @*<th>
+            Título
+        </th>*@
+        <th>
+            Etapa
+        </th>
+        <th>
+            Usuário
+        </th>
+        <th>
+            Atendente
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in mNovosChamados) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Chamado.ChamadoId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Categoria.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Topico.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Celula.Nome)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Chamado.Titulo)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.Etapa.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Usuario.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Atendente.Nome)
+        </td>
+        <td>
+            <button type="button" class=" btn btn-info btn-mini" onclick="location.href='@Url.Action("Details", "Chamado", new { id = item.Chamado.ChamadoId })'">
+                &nbsp; <i class="icon-tasks icon-white icone"></i> &nbsp;
+            </button>
+        </td>
+    </tr>
+}
+</table>
+
+<p>&nbsp;</p>
+
+<!-- Tabela de meus chamados -->
+<h4>Meus chamados</h4>
+<table width="100%">
+    <tr>
+        <th>
+            #
+        </th>
+        <th>
+            Categoria
+        </th>
+        <th>
+            Tópico
+        </th>
+        <th>
+            Célula
+        </th>
+        @*<th>
+            Título
+        </th>*@
+        <th>
+            Etapa
+        </th>
+        <th>
+            Usuário
+        </th>
+        <th>
+            Atendente
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in mMeusChamados) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Chamado.ChamadoId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Categoria.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Topico.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Celula.Nome)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Chamado.Titulo)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.Etapa.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Usuario.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Atendente.Nome)
+        </td>
+        <td>
+            <button type="button" class=" btn btn-info btn-mini" onclick="location.href='@Url.Action("Details", "Chamado", new { id = item.Chamado.ChamadoId })'">
+                &nbsp; <i class="icon-tasks icon-white icone"></i> &nbsp;
+            </button>
+        </td>
+    </tr>
+}
+</table>
+
+<script>
+    $(document).ready(function () {
+        
+        @if (Mensagem != null && Mensagem != "") {
+            @: ExibeMensagem("@Mensagem", "Sucesso");
+        }
+    });
+</script>
+

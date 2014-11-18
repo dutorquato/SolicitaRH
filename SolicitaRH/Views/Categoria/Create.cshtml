@@ -1,0 +1,26 @@
+﻿@model SolicitaRH.Models.Categoria
+
+@{
+    ViewBag.Title = "Cadastrar categoria";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Nome)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.Nome)
+        @Html.ValidationMessageFor(model => model.Nome)
+    </div>
+
+    <p>
+        <input type="submit" value="Cadastrar" class="btn btn-success" />
+
+        <button type="button" class=" btn btn-inverse " onclick="location.href='@Url.Action("Index", "Categoria")'">
+            <i class="icon-arrow-left icon-white icone "></i> Voltar 
+        </button>
+    </p>
+}

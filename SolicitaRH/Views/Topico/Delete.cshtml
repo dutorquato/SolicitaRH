@@ -1,0 +1,30 @@
+﻿@model SolicitaRH.Models._Topico
+
+@{
+    ViewBag.Title = "Excluir tópico";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<h3>Tem certeza que deseja excluir este registro?</h3>
+
+<div class="display-label">Categoria: <strong>@Model.Categoria.Nome</strong></div>
+
+<div class="display-label">Nome: <strong>@Model.Topico.Nome</strong></div>
+
+<div class="display-label">Categoria: <strong>@Model.Celula.Nome</strong></div>
+
+<div class="display-label">Prioridade: <strong>@Model.Topico.Prioridade</strong></div>
+
+<div class="display-label">Tempo previsto: <strong>@Model.Topico.TempoMedioPrevisto</strong></div>
+
+@using (Html.BeginForm()) {
+    <p>
+        <br />
+        <input type="submit" value="Excluir" class="btn btn-warning" />
+                
+        <button type="button" class=" btn btn-inverse " onclick="location.href='@Url.Action("Index", "Topico")'">
+            <i class="icon-arrow-left icon-white icone "></i> Voltar
+        </button>
+    </p>
+}

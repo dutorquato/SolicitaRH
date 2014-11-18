@@ -1,0 +1,78 @@
+﻿@model IEnumerable<SolicitaRH.Models._Topico>
+
+@{
+    ViewBag.Title = "Tópicos";
+    var Mensagem = TempData["Mensagem"];
+}
+
+<h2>@ViewBag.Title</h2>
+
+<!-- Cadastrar -->
+<p>
+    <button type="button" class=" btn btn-primary btn-small" onclick="location.href='@Url.Action("Create","Topico")'">
+        <i class="icon-plus icon-white icone "></i> Cadastrar
+    </button>
+</p>
+
+<!-- Tabela de dados -->
+<table width="100%">
+    <tr>
+        <th>
+            Categoria
+        </th>
+        <th>
+            Nome
+        </th>
+        <th>
+            Célula
+        </th>
+        <th>
+            Prioridade
+        </th>
+        <th>
+            Tempo previsto
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Categoria.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Topico.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Celula.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Topico.Prioridade)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Topico.TempoMedioPrevisto)
+        </td>
+        <td>
+            <button type="button" class=" btn btn-info btn-mini" onclick="location.href='@Url.Action("Details", "Topico", new { id = item.Topico.TopicoId })'">
+                <i class="icon-tasks icon-white icone"></i> Detalhes
+            </button>
+            <button type="button" class=" btn btn-warning btn-mini" onclick="location.href='@Url.Action("Edit", "Topico", new { id = item.Topico.TopicoId })'">
+                <i class="icon-wrench icon-white icone"></i> Editar
+            </button>
+                <button type="button" class=" btn btn-danger btn-mini" onclick="location.href='@Url.Action("Delete", "Topico", new { id = item.Topico.TopicoId })'">
+                <i class="icon-remove icon-white icone"></i> Excluir
+            </button>
+        </td>
+    </tr>
+}
+
+</table>
+
+<script>
+    $(document).ready(function () {
+        
+        @if (Mensagem != null && Mensagem != "") {
+            @: ExibeMensagem("@Mensagem", "Sucesso");
+        }
+    });
+</script>

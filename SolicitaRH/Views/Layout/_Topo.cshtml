@@ -1,0 +1,22 @@
+﻿<div class="full geral" >
+        <ul class="topo">
+            <li class="logo-cliente"><img src="Imagens/LogoCliente.png" /></li>
+            <li class="pesquisar">
+                
+                @using (Html.BeginForm("Index", "Chamado", FormMethod.Post, new { id = "formPesquisaTopo" })) {
+                    <input type name="PesquisaTopo" id="pesquisar-menu" placeholder="Buscar chamados"/>
+                    <button type="submit" class=" btn btn-mini" onclick="location.href='@Url.Action("Details", "Chamado")'">
+                        &nbsp; <i class="icon-search icone"></i> &nbsp;
+                    </button>
+                }
+            </li>
+            <li class="bem-vindo">Bem vindo(a), @SolicitaRH.Funcoes.Sessao.Nome</li>
+            <li class="menu-rapido">
+                <ul>
+                    <li><a href="@Url.Action("Index", "Chamado")">Pagina Incial</a></li>
+                    <li><a href="@Url.Action("Create", "Chamado")">Novo chamado</a></li>
+                    <li><a href="@Url.Action("Logout", "Login")">Sair</a></li>   
+                </ul>
+            </li>
+        </ul>
+</div>

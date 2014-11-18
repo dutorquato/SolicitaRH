@@ -1,0 +1,351 @@
+﻿/* CSS Document */
+body{
+	margin:0px;
+	padding:0px;
+	font-family:'Open Sans', Helvetica, Arial, sans-serif;	
+	font-size:14px;
+}
+
+h2 {
+    float:left;
+    width:100%;
+    margin:0px;
+    padding:0px;
+    font-size:26px;
+    border-bottom:4px double #e8e8e8;
+    padding:20px 0 5px 0;
+    margin-bottom:10px;
+    font-weight:normal;
+    color:#666;
+}
+
+h4 {
+    float:left;
+    width:100%;
+    margin:0px;
+    padding:0px;
+    font-size:16px;
+    border-bottom:2px dashed #e8e8e8;
+    padding:20px 0 5px 0;
+    margin-bottom:10px;
+    font-weight:normal;
+    color:#666;
+    color:#f47a34;
+    font-weight:bold;
+}
+
+a {
+    color:#f47a34;
+}
+textarea {
+    width:98%;
+}
+
+th {
+    border-bottom:1px solid #ccc;
+    padding-bottom:5px;color:#666;
+
+}
+td {
+    padding-bottom:5px;
+    padding-top:5px;
+    
+}
+
+
+
+.cabecalho-interacao {
+    background-color:#f6f6f6;
+    border-top:1px solid #ccc;
+    font-size:12px;
+}
+.interacao {
+    padding-bottom:10px;
+    float:left;
+    font-size:12px;
+}
+
+.display {
+    float:left;
+    width:100%;
+    margin-top:3px;
+    margin-bottom:3px;
+}
+
+.full{
+	width:100%;
+	float:left;	
+}
+
+.geral{
+	width:980px;
+	position:relative;
+	left:50%;
+	margin-left:-490px;	
+	float:left;
+	border:0px solid #ccc;
+}
+
+.logo{
+	padding-top:20px;
+	padding-bottom:30px;	
+	float:right;
+}
+.logo-cliente{
+	padding-top:0px;
+	padding-bottom:10px;	
+	float:left;
+}
+.menu{
+	float:right;
+	padding-top:30px;
+	font-size:16px;	
+	color:#666;
+	/*word-spacing:20px;
+*/	color:#999;
+	padding-right:20px;
+}
+.menu a{
+	color:#333;
+	text-decoration:none;	
+}
+
+
+.pesquisa{
+	border-top:1px solid #e8e8e8;
+	border-bottom:1px solid #e8e8e8;
+	background-color:#f5f5f5;
+	min-height:100px;
+    padding-top:23px;	
+}
+
+.pesquisa input{
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+	border-radius: 30px;	
+	padding:19px;
+	font-size:25px;
+	margin-top:5px;
+	border:1px solid #ccc;
+	width:925px;
+	font-size:18px;
+	padding-left:25px;
+	font-family:'Open Sans', Helvetica, Arial, sans-serif;
+}
+.pesquisa .botao{
+	width:120px;
+	padding:10px;
+	margin-left:-130px;
+	margin-top:17px;
+	font-size:15px;	
+	background-color:#f47a34;
+	color:#fff;
+	position:absolute;
+	font-weight:bold;
+	border:0px;
+}
+
+.geral{	
+	padding:0px;
+}
+.rodape{
+	padding-top:20px;
+	margin-top:10px;
+	border-top:1px solid #e8e8e8;
+	text-align:center;	
+	font-size:12px;
+	color:#999;
+}
+
+.administrador {
+    background-color:#f9f9f9;
+    border-top:1px solid #f5f5f5;
+    padding-top:10px;
+}
+.menu-administrador {
+    width:100%;
+    float:left;
+    margin:0px;
+    padding:0px;
+    list-style:none;
+}
+    .menu-administrador li {
+        float:left;
+    }
+        .menu-administrador li a {
+            float:left;
+            text-decoration:none;
+            color:#666;
+            margin-left:15px;
+            border-bottom:2px solid #f9f9f9;
+            padding-bottom:10px;
+        }
+            .menu-administrador li a:hover {
+                color:#000;
+                border-bottom:2px solid #333;
+            }
+
+.geral .menu-usuario {
+    float:left;
+    width:100%;
+    
+    border-bottom:1px solid #ccc;
+}
+    .geral .menu-usuario ul {
+        float:left;
+        width:100%;
+        margin:0px;
+        padding:0px;
+        list-style:none;
+    }
+        .geral .menu-usuario ul li {
+            float:left;
+            width:100%;
+        }
+            .geral .menu-usuario ul li.titulo {
+                padding-left:5px;
+                padding-top:5px;
+                padding-bottom:5px;
+                float:left;
+                text-decoration:none;
+                width:144px;
+                font-size:16px;
+                color:#999;
+                
+                border-bottom:1px solid #ccc;
+                cursor:default;
+                padding-top:26px;
+            }
+            .geral .menu-usuario ul li a {
+                padding-left:5px;
+                padding-top:5px;
+                padding-bottom:5px;
+                float:left;
+                text-decoration:none;
+                width:144px;
+                font-size:12px;
+                color:#f47a34;
+            }
+                .geral .menu-usuario ul li a:hover {
+                    background-color:#f6f6f6;
+                    color:#000;
+                }
+.geral .conteudo {
+    float:left;
+    width:820px;
+}
+
+
+
+/* LOGIN */
+#BoxLogin {
+    -webkit-box-shadow: 0px 3px 9px rgba(50, 50, 50, 0.57);
+    -moz-box-shadow:    0px 3px 9px rgba(50, 50, 50, 0.57);
+    box-shadow:         0px 3px 9px rgba(50, 50, 50, 0.57);
+    float:left;
+    width:400px;
+   
+
+    padding-top:40px;
+    padding-bottom:20px;
+
+    left:50%;
+    margin-left:-200px;
+    top:50%;
+    background-color:#fff;
+    margin-top:-160px;
+    position:absolute;
+}
+.BodyLogin {
+    background:url(imagens/fundo.png) bottom center ;
+}
+.Sumario {
+    text-align:center;
+}
+    .Sumario ul {
+        float:left;
+        list-style:none;
+        padding:0px;
+        margin:0px;
+        width:100%;
+        margin-bottom:10px;
+        color:#f47a34;
+    }
+
+
+.topico-lista {
+    float:left;
+    width:100%;
+    padding:0px;
+    margin:0px;
+    list-style:none;
+   
+}
+    .topico-lista .titulo {
+        background-color:#f5f5f5;
+        font-weight:bold;
+        border-bottom:1px solid #ccc;
+        padding-bottom:5px;
+        padding-top:5px;
+        float:left;
+        width:100%;
+    }
+        .topico-lista .titulo span {
+            margin-left:10px;
+            float:left;
+        }
+    
+            .topico-lista .coluna1 {
+                margin:0px;
+                float:left;
+                width:60%;
+                font-size:13px;
+                font-weight:normal;
+                margin-top:5px;
+                
+            }
+    .topico-lista .coluna2 {
+         margin:0px;
+                float:left;
+                width:40%;
+                font-size:13px;
+                font-weight:normal;
+                margin-top:5px;
+    }
+                .topico-lista .coluna span {
+                    float:left;
+                    margin-top:2px;
+                    font-size:14px;
+                    padding-top:5px;
+                padding-bottom:5px;
+                margin-left:10px;
+                }
+.topico-atualizado, .celula-atualizada {
+    display:none;
+    color:#f47a34;
+    margin-top:5px;
+    float:right;
+}
+
+
+.Tickets {
+    font-size:12px;
+}
+
+.Tickets tr:nth-child(even) {background: #fff}
+.Tickets tr:nth-child(odd) {background: #f5f5f5}
+.Tickets tr th {
+    background:#fff;
+}
+
+.SombraBox {
+    -moz-box-shadow: 5px 5px #888;
+    -webkit-box-shadow: 5px 5px #888;
+    box-shadow: 5px 5px #888;
+border:1px solid #ccc;
+}
+
+#Ticket-Anexo-Div {
+    padding:10px;
+    margin-bottom:20px;
+}

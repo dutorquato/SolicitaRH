@@ -1,0 +1,28 @@
+﻿@model SolicitaRH.Models.Usuario
+
+@{
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+    ViewBag.Title = "";
+}
+
+@using (Html.BeginForm()) {
+    <p align="center"><img style="width:182px; heigh:41px;">
+        <span>Login</span><br />
+        @Html.TextBoxFor(c => c.Login)
+    </p>
+    <p align="center">
+        <span>Senha</span><br />
+        @Html.TextBoxFor(c => c.Senha, new { @type = "password" })
+    </p>
+    
+    <div class="Sumario">
+        @*Html.ValidationSummary(false)*@
+
+        @if (ViewBag.Mensagem != null) {
+            @: <div class="validation-summary-errors" id="validationSummary"><ul><li>@ViewBag.Mensagem</li></ul></div>
+        }
+    </div>
+    <p align="center">
+        <button class="btn btn-inverse btn-large" type="submit">Entrar</button>
+    </p>
+}

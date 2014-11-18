@@ -1,0 +1,32 @@
+﻿@model SolicitaRH.Models.Etapa
+
+@{
+    ViewBag.Title = "Excluir etapa";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<h3>Tem certeza que deseja excluir este registro?</h3>
+
+<div class="display-label">É primeira etapa: <strong>@Html.DisplayFor(model => model.EPrimeiraEtapa)</strong></div>
+
+<div class="display-label">Nome: <strong>@Model.Nome</strong></div>
+
+<div class="display-label">Identificador: <strong>@Model.EtapaId</strong></div>
+
+<div class="display-label">Permite interação: <strong>@Html.DisplayFor(model => model.PermiteInteracao)</strong></div>
+
+<div class="display-label">Desativado: <strong>@Html.DisplayFor(model => model.Desativado)</strong></div>
+
+<div class="display-label">Ações: <strong>@SolicitaRH.Funcoes.Geral.PegaAcoesNome(Model.EtapaId)</strong></div>
+
+@using (Html.BeginForm()) {
+    <p>
+        <br />
+        <input type="submit" value="Excluir" class="btn btn-warning" />
+                
+        <button type="button" class=" btn btn-inverse " onclick="location.href='@Url.Action("Index", "Etapa")'">
+            <i class="icon-arrow-left icon-white icone "></i> Voltar
+        </button>
+    </p>
+}

@@ -1,0 +1,25 @@
+﻿@model SolicitaRH.Models.Celula
+
+@{
+    ViewBag.Title = "Detalhar célula";
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+<div class="display-label">Nome: <strong>@Model.Nome</strong></div>
+
+<div class="display-label">Prioridade: <strong>@Model.Prioridade</strong></div>
+
+<!-- A FAZER Listagem de usuários na célula -->
+
+<p>
+    <br />
+    <button type="button" class=" btn btn-warning " onclick="location.href='@Url.Action("Edit", "Celula", new { id = Model.CelulaId })'">
+        <i class="icon-wrench icon-white icone"></i> Editar
+    </button>
+    
+    <button type="button" class=" btn btn-inverse " onclick="location.href='@Url.Action("Index", "Celula")'">
+        <i class="icon-arrow-left icon-white icone "></i> Voltar
+    </button>
+</p>
